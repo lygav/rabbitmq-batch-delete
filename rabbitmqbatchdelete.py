@@ -14,8 +14,8 @@ def get_queues():
 
 def delete_queue(name):
     return subprocess.Popen(
-        ['rabbitmqadmin', '-V ' + host, '-u' + rabbit_username, '-p' + rabbit_password, 'delete', 'queue',
-         'name="%s"' %  name],
+        ['rabbitmqadmin', '-V' + host, '-u' + rabbit_username, '-p' + rabbit_password, 'delete', 'queue',
+         'name=%s' %  name],
         stdout=subprocess.PIPE).communicate()[0]
 
 
