@@ -21,13 +21,13 @@ def delete_queue(name):
 
 try:
     pattern = argv.pop(1)
-    compiled = re.compile(r"%s.[^\|]+" % pattern.rstrip('\r\n'), re.MULTILINE)
+    compiled = re.compile(r"%s.[^\|]+" % pattern, re.MULTILINE)
     queues = get_queues()
     matches = re.findall(compiled, queues)
     if matches:
         for name in matches:
             print 'deleting ' + name
-            print "%s %s" % (delete_queue(name), name)
+            print "%s %s" % (delete_queue(name.strip(" \r\n")), name)
     else:
         print "No matches found for pattern " + compiled.pattern
 except:
